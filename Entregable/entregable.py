@@ -81,10 +81,26 @@ def fotografia(html):
     return foto
 
 def reparto(html):
+    # listado_reparto = ""
+    # label = html[html.find("<dt>Reparto</dt>"):]
+    # reparto = label[label.find("card-cast"):label.find(dd_c)]
+    # reparto = reparto[reparto.find("credits"):reparto.find(div_c)]
+    # for i in reparto:
+    #     conjuntoReparto = reparto[reparto.find("actor"):reparto.find(div_c)]
+    #     conjuntoReparto = conjuntoReparto[conjuntoReparto.find("url"):conjuntoReparto.find("</a>")]
+    #     conjuntoReparto = conjuntoReparto[conjuntoReparto.find("name"):conjuntoReparto.find(span_c)]
+    #     conjuntoReparto = conjuntoReparto[conjuntoReparto.find(">") + 1:]
+    #     listado_reparto += conjuntoReparto
+    # print(listado_reparto)
+
     label = html[html.find("<dt>Reparto</dt>"):]
     reparto = label[label.find("card-cast"):label.find(dd_c)]
     reparto = reparto[reparto.find("credits"):reparto.find(div_c)]
-    reparto = reparto[reparto.find("nb"):reparto.find(span_c)]
+    reparto = reparto[reparto.find("actor"):reparto.find(div_c)]
+    reparto = reparto[reparto.find("url"):reparto.find("</a>")]
+    reparto = reparto[reparto.find("name"):reparto.find(span_c)]
+    reparto = reparto[reparto.find(">") + 1:]
+    return reparto
 
 def sinopsis(html):
     label = html[html.find("<dt>Sinopsis</dt>"):]
@@ -101,7 +117,7 @@ diccionario["direccion"] = direccion(html)
 diccionario["guion"] = guion(html)
 diccionario["musica"] = musica(html)
 diccionario["fotografia"] = fotografia(html)
-# diccionario["reparto"] = reparto(html)
+diccionario["reparto"] = reparto(html)
 # diccionario["productora"] = productora(html)
 # diccionario["genero"] = genero(html)
 diccionario["sinopsis"] = sinopsis(html)
